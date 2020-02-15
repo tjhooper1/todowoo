@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Todowoo</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    </head>
+    <body>
+        {% if user.is_authenticated %} Logged In as {{ user.username }}
+
+        <form action="{% url 'logoutuser' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit">LOGOUT</button>
+        </form>
+        {% else %}
+        <a href="#">SIGNUP</a>
+        <a href="#">LOGIN</a>
+        {% endif %}
+        <br />
+        {% block content %} {% endblock content %}
+    </body>
+</html>
